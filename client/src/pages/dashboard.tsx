@@ -1,4 +1,4 @@
-import { useState } from 'react';
+// React dashboard page
 import { Link } from 'wouter';
 import { useQuery } from '@tanstack/react-query';
 import SpaceBackground from '@/components/space-background';
@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useUserProgress } from '@/hooks/use-user-progress';
-import { Activity, LearningModule } from '@/types';
+import { LearningModule } from '@/types';
 import type { RocketDesign, ModuleProgress } from '@shared/schema';
 import { BADGE_DEFINITIONS } from '@/types';
 

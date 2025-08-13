@@ -93,7 +93,7 @@ export default function RocketBuilderComponent() {
   useEffect(() => {
     updateRocketStats();
     if (rocketVisualizationRef.current) {
-      rocketVisualizationRef.current.updateRocketParts(rocketState.parts as Record<string, boolean>);
+      rocketVisualizationRef.current.updateRocketParts(rocketState.parts as unknown as Record<string, boolean>);
     }
   }, [rocketState.parts]);
 

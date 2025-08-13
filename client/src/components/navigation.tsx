@@ -1,9 +1,9 @@
-import { Link, useLocation } from 'wouter';
+import { Link } from 'wouter';
 import { useUserProgress } from '@/hooks/use-user-progress';
 import { Button } from '@/components/ui/button';
 
 export default function Navigation() {
-  const [location] = useLocation();
+  // const [location] = useLocation(); // Navigation is used for menu display
   const { user, isLoading } = useUserProgress();
 
   if (isLoading) return null;

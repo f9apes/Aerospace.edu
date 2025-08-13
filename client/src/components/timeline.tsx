@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Card } from '@/components/ui/card';
-import { SpaceMission, SPACE_MISSIONS } from '@/types';
+import { SPACE_MISSIONS } from '@/types';
 import animations from '@/lib/animations';
 
 export default function Timeline() {

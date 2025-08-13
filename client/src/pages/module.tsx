@@ -6,8 +6,8 @@ import Navigation from '@/components/navigation';
 import Quiz from '@/components/quiz';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Progress } from '@/components/ui/progress';
-import { LearningModule, ModuleSection } from '@/types';
+// import { Progress } from '@/components/ui/progress';
+import { LearningModule } from '@/types';
 import { useUserProgress } from '@/hooks/use-user-progress';
 import { apiRequest } from '@/lib/queryClient';
 import animations from '@/lib/animations';
@@ -29,10 +29,10 @@ export default function Module() {
   });
 
   // Fetch module progress
-  const { data: progress } = useQuery({
-    queryKey: ['/api/user', userId, 'progress', moduleId],
-    enabled: !!userId
-  });
+  // const { data: progress } = useQuery({
+  //   queryKey: ['/api/user', userId, 'progress', moduleId],
+  //   enabled: !!userId
+  // });
 
   // Complete module mutation
   const completeModuleMutation = useMutation({
