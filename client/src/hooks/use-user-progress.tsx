@@ -52,13 +52,61 @@ export function useUserProgress() {
       return response.json();
     },
     onSuccess: (updatedUser) => {
+      const previousXP = user?.xp || 0;
+      const xpGained = updatedUser.xp - previousXP;
+      const previousLevel = user?.level || 1;
+      const newLevel = updatedUser.level;
+      
       queryClient.setQueryData(["/api/user", DEMO_USER_ID], updatedUser);
       queryClient.invalidateQueries({ queryKey: ["/api/user", DEMO_USER_ID, "activities"] });
-      toast({
-        title: "XP Earned!",
-        description: `You earned ${updatedUser.xp - (user?.xp || 0)} XP!`,
-        duration: 3000,
-      });
+      
+      // Show XP animation
+      if (xpGained > 0) {
+        const notification = document.createElement('div');
+        notification.className = 'fixed top-20 right-4 z-50 bg-gradient-to-r from-solar-yellow to-cosmic-purple text-white px-4 py-2 rounded-lg font-bold shadow-lg';
+        notification.innerHTML = `
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-star text-lg"></i>
+            <span>+${xpGained} XP</span>
+          </div>
+        `;
+        document.body.appendChild(notification);
+
+        // Animate the notification
+        notification.style.transform = 'translateX(100px)';
+        notification.style.opacity = '0';
+        
+        setTimeout(() => {
+          notification.style.transition = 'all 0.5s ease-out';
+          notification.style.transform = 'translateX(0)';
+          notification.style.opacity = '1';
+        }, 100);
+        
+        setTimeout(() => {
+          notification.style.transform = 'translateY(-50px)';
+          notification.style.opacity = '0';
+          setTimeout(() => {
+            if (document.body.contains(notification)) {
+              document.body.removeChild(notification);
+            }
+          }, 500);
+        }, 2500);
+      }
+      
+      // Show level up notification
+      if (newLevel > previousLevel) {
+        toast({
+          title: "🎉 Level Up!",
+          description: `Congratulations! You reached Level ${newLevel}!`,
+          duration: 5000,
+        });
+      } else {
+        toast({
+          title: "XP Earned!",
+          description: `You earned ${xpGained} XP!`,
+          duration: 3000,
+        });
+      }
     }
   });
 

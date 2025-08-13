@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { RocketParts, RocketState } from '@/types';
+import { RocketState } from '@/types';
+import type { RocketParts } from '@shared/schema';
 import { useUserProgress } from '@/hooks/use-user-progress';
 import { RocketVisualization } from '@/lib/three-setup';
 import animations from '@/lib/animations';
@@ -92,7 +93,7 @@ export default function RocketBuilderComponent() {
   useEffect(() => {
     updateRocketStats();
     if (rocketVisualizationRef.current) {
-      rocketVisualizationRef.current.updateRocketParts(rocketState.parts);
+      rocketVisualizationRef.current.updateRocketParts(rocketState.parts as Record<string, boolean>);
     }
   }, [rocketState.parts]);
 
@@ -309,7 +310,7 @@ export default function RocketBuilderComponent() {
           <Button
             onClick={handleTestLaunch}
             disabled={!isComplete || isLaunching}
-            className="w-full bg-gradient-to-r from-neon-cyan to-cosmic-purple py-3 rounded-lg font-bold hover:scale-105 transition-all disabled:opacity-50 disabled:hover:scale-100"
+            className="w-full bg-gradient-to-r from-neon-cyan to-cosmic-purple py-3 rounded-lg font-bold interactive-btn btn-glow disabled:opacity-50"
           >
             {isLaunching ? (
               <>
@@ -327,7 +328,7 @@ export default function RocketBuilderComponent() {
           <Button
             onClick={handleReset}
             variant="outline"
-            className="w-full border-gray-600 hover:bg-gray-700"
+            className="w-full border-gray-600 hover:bg-gray-700 interactive-btn"
           >
             <i className="fas fa-redo mr-2"></i>
             Reset Design

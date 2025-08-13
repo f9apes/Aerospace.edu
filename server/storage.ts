@@ -257,6 +257,10 @@ export class MemStorage implements IStorage {
     const progress: ModuleProgress = {
       ...insertProgress,
       id,
+      completed: insertProgress.completed ?? false,
+      score: insertProgress.score ?? 0,
+      timeSpent: insertProgress.timeSpent ?? 0,
+      quizAnswers: insertProgress.quizAnswers ?? {},
       completedAt: insertProgress.completed ? new Date().toISOString() : null
     };
     this.moduleProgress.set(id, progress);
@@ -310,6 +314,7 @@ export class MemStorage implements IStorage {
     const design: RocketDesign = {
       ...insertDesign,
       id,
+      launchSuccess: insertDesign.launchSuccess ?? false,
       createdAt: new Date().toISOString()
     };
     this.rocketDesigns.set(id, design);
@@ -333,6 +338,7 @@ export class MemStorage implements IStorage {
     const activity: UserActivity = {
       ...insertActivity,
       id,
+      xpEarned: insertActivity.xpEarned ?? 0,
       createdAt: new Date().toISOString()
     };
     this.userActivities.set(id, activity);

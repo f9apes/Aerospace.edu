@@ -7,7 +7,8 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useUserProgress } from '@/hooks/use-user-progress';
-import { Activity, LearningModule, RocketDesign } from '@/types';
+import { Activity, LearningModule } from '@/types';
+import type { RocketDesign, ModuleProgress } from '@shared/schema';
 import { BADGE_DEFINITIONS } from '@/types';
 
 export default function Dashboard() {
@@ -19,7 +20,7 @@ export default function Dashboard() {
   });
 
   // Fetch user's module progress
-  const { data: moduleProgress = [] } = useQuery({
+  const { data: moduleProgress = [] } = useQuery<ModuleProgress[]>({
     queryKey: ['/api/user', userId, 'progress'],
     enabled: !!userId
   });

@@ -4,7 +4,7 @@ export class RocketVisualization {
   private scene: THREE.Scene;
   private camera: THREE.PerspectiveCamera;
   private renderer: THREE.WebGLRenderer;
-  private rocket: THREE.Group;
+  private rocket: THREE.Group = new THREE.Group();
   private animationId: number | null = null;
 
   constructor(container: HTMLElement) {

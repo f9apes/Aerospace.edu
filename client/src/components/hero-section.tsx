@@ -66,7 +66,7 @@ export default function HeroSection() {
         <Button
           onClick={scrollToModules}
           size="lg"
-          className="inline-flex items-center px-12 py-6 bg-gradient-to-r from-neon-cyan to-cosmic-purple rounded-full text-xl font-bold hover:scale-105 transition-all duration-300 animate-pulse-glow group mb-16"
+          className="inline-flex items-center px-12 py-6 bg-gradient-to-r from-neon-cyan to-cosmic-purple rounded-full text-xl font-bold interactive-btn btn-glow group mb-16"
         >
           <i className="fas fa-rocket mr-3 group-hover:animate-bounce"></i>
           Start Mission
@@ -77,7 +77,7 @@ export default function HeroSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {PREVIEW_CARDS.map((card, index) => (
             <Link key={index} href={`/module/${card.moduleId}`}>
-              <Card className="glass-effect rounded-xl p-6 hover:scale-105 transition-all duration-300 cursor-pointer group">
+              <Card className="glass-effect rounded-xl p-6 card-hover cursor-pointer group click-feedback">
                 <img 
                   src={card.image}
                   alt={card.description}

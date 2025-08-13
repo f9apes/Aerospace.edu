@@ -29,7 +29,10 @@ export const animations = {
 
   // Stagger animations for module cards
   animateModuleCards: () => {
-    gsap.fromTo('.module-card', 
+    const moduleCards = document.querySelectorAll('.module-card');
+    if (moduleCards.length === 0) return;
+    
+    gsap.fromTo(moduleCards, 
       { 
         y: 100, 
         opacity: 0,
@@ -43,7 +46,7 @@ export const animations = {
         stagger: 0.2,
         ease: "back.out(1.7)",
         scrollTrigger: {
-          trigger: '.module-card',
+          trigger: moduleCards[0],
           start: 'top 80%',
           end: 'bottom 20%',
         }
@@ -53,7 +56,10 @@ export const animations = {
 
   // Rocket parts animation
   animateRocketParts: () => {
-    gsap.fromTo('.rocket-part',
+    const rocketParts = document.querySelectorAll('.rocket-part');
+    if (rocketParts.length === 0) return;
+    
+    gsap.fromTo(rocketParts,
       {
         scale: 0.8,
         opacity: 0

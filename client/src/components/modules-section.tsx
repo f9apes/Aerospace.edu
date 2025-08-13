@@ -66,7 +66,7 @@ export default function ModulesSection() {
             return (
               <Card 
                 key={module.id}
-                className="module-card glass-effect rounded-xl p-8 cursor-pointer hover:scale-105 transition-all duration-300"
+                className="module-card glass-effect rounded-xl p-8 cursor-pointer card-hover click-feedback"
               >
                 <div className="text-center mb-6">
                   <div className={`w-20 h-20 mx-auto bg-gradient-to-br from-${color} to-cosmic-purple rounded-full flex items-center justify-center mb-4`}>

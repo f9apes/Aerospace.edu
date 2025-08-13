@@ -62,10 +62,27 @@ export default function Home() {
             </div>
           </div>
           
-          <div className="border-t border-gray-700 mt-8 pt-8 text-center">
-            <p className="text-gray-400 text-sm">
-              © 2024 Aero.edu. Inspiring the next generation of aerospace engineers.
-            </p>
+          <div className="border-t border-gray-700 mt-8 pt-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+              <div className="text-center md:text-left">
+                <p className="text-gray-400 text-sm mb-2">
+                  © 2025 Aero.edu. All rights reserved.
+                </p>
+                <p className="text-gray-400 text-sm">
+                  Inspiring the next generation of aerospace engineers.
+                </p>
+              </div>
+              <div className="text-center md:text-right">
+                <p className="text-gray-400 text-sm mb-1">Contact us:</p>
+                <a 
+                  href="mailto:aeroeng.edu@gmail.com" 
+                  className="text-neon-cyan hover:text-solar-yellow transition-colors text-sm font-medium"
+                >
+                  <i className="fas fa-envelope mr-2"></i>
+                  aeroeng.edu@gmail.com
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </footer>
